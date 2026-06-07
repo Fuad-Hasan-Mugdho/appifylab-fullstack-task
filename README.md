@@ -52,6 +52,23 @@ For production, set a strong JWT secret before running:
 JWT_SECRET="replace-with-a-long-random-secret" docker compose up --build -d
 ```
 
+## Render Deployment
+
+This repository includes `render.yaml` for one-click Render deployment with:
+
+- Docker web service
+- Managed PostgreSQL database
+- Generated `JWT_SECRET`
+- `DATABASE_URL` injected from the Render database
+
+Deploy steps:
+
+1. Push this repository to GitHub.
+2. Go to Render and choose **New > Blueprint**.
+3. Connect this GitHub repository.
+4. Apply the `render.yaml` blueprint.
+5. Wait for the deploy to finish and open the generated live URL.
+
 ## Demo Flow
 
 1. Register two users in separate browser sessions.

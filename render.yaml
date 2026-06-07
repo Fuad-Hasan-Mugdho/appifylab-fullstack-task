@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: appifylab-social-feed
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: appifylab-postgres
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+
+databases:
+  - name: appifylab-postgres
+    plan: free
