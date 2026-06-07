@@ -1,0 +1,10 @@
+node_modules
+.next
+.env
+.env.local
+__MACOSX/
+Selection_Task_for_Full_Stack_Engineer_at_Appifylab.pdf
+prisma/dev.db
+prisma/dev.db-journal
+public/uploads/*
+!public/uploads/.gitkeep

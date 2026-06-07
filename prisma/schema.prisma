@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PostVisibility {
+  PUBLIC
+  PRIVATE
+}
+
+enum LikeTargetType {
+  POST
+  COMMENT
+}
+
+model User {
+  id           String    @id @default(cuid())
+  firstName    String
+  lastName     String
+  email        String    @unique
+  passwordHash String
+  createdAt    DateTime  @default(now())
+  posts        Post[]
+  comments     Comment[]
+  likes        Like[]
+
+  @@index([email])
+}
+
+model Post {
+  id         String         @id @default(cuid())
+  content    String
+  imageUrl   String?
+  visibility PostVisibility @default(PUBLIC)
+  authorId   String
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  author     User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  comments   Comment[]
+
+  @@index([visibility, createdAt])
+  @@index([authorId, createdAt])
+}
+
+model Comment {
+  id        String    @id @default(cuid())
+  content   String
+  authorId  String
+  postId    String
+  parentId  String?
+  createdAt DateTime  @default(now())
+  author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies   Comment[] @relation("CommentReplies")
+
+  @@index([postId, parentId, createdAt])
+  @@index([authorId, createdAt])
+}
+
+model Like {
+  id         String         @id @default(cuid())
+  targetType LikeTargetType
+  targetId   String
+  userId     String
+  createdAt  DateTime       @default(now())
+  user       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([targetType, targetId, userId])
+  @@index([targetType, targetId])
+  @@index([userId])
+}

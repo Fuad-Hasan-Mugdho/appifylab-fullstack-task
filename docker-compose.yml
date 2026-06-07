@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: appifylab-postgres
+    environment:
+      POSTGRES_DB: appifylab_social_feed
+      POSTGRES_USER: appifylab
+      POSTGRES_PASSWORD: appifylab_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - appifylab_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appifylab -d appifylab_social_feed"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: appifylab-social-feed
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://appifylab:appifylab_password@db:5432/appifylab_social_feed?schema=public"
+      JWT_SECRET: "${JWT_SECRET:-change-this-docker-secret-before-production}"
+      NODE_ENV: "production"
+    volumes:
+      - appifylab_uploads:/app/public/uploads
+    restart: unless-stopped
+
+volumes:
+  appifylab_postgres_data:
+  appifylab_uploads:

@@ -1,0 +1,359 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+.app_message {
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 18px;
+  padding: 10px 12px;
+}
+
+.app_message_error {
+  background: #fff0f0;
+  color: #b42318;
+}
+
+.app_message_success {
+  background: #edfdf4;
+  color: #067647;
+}
+
+.app_auth_link {
+  border: 0;
+  background: transparent;
+  color: #5865f2;
+  font-weight: 600;
+  padding: 0;
+}
+
+.app_feed_shell {
+  background: #f6f7fb;
+  min-height: 100vh;
+}
+
+.app_feed_header {
+  background: #fff;
+  border-bottom: 1px solid #eef0f5;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app_feed_header_inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 74px;
+}
+
+.app_feed_user {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+
+.app_avatar {
+  align-items: center;
+  background: #5865f2;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-weight: 700;
+  height: 42px;
+  justify-content: center;
+  width: 42px;
+}
+
+.app_logout_btn,
+.app_post_btn,
+.app_action_btn {
+  border: 0;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.app_logout_btn {
+  background: #fff0f0;
+  color: #b42318;
+  padding: 9px 14px;
+}
+
+.app_feed_grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  padding-bottom: 40px;
+  padding-top: 24px;
+}
+
+.app_card {
+  background: #fff;
+  border: 1px solid #eef0f5;
+  border-radius: 6px;
+}
+
+.app_composer {
+  padding: 22px;
+}
+
+.app_composer_top {
+  align-items: flex-start;
+  display: flex;
+  gap: 14px;
+}
+
+.app_composer textarea,
+.app_comment_form textarea,
+.app_reply_form textarea {
+  border: 1px solid #e2e5ef;
+  border-radius: 6px;
+  min-height: 82px;
+  resize: vertical;
+}
+
+.app_composer_controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.app_visibility {
+  border: 1px solid #e2e5ef;
+  border-radius: 6px;
+  color: #344054;
+  min-height: 40px;
+  padding: 0 12px;
+}
+
+.app_file_input {
+  color: #475467;
+  font-size: 14px;
+  max-width: 240px;
+}
+
+.app_post_btn {
+  background: #5865f2;
+  color: #fff;
+  min-height: 40px;
+  padding: 0 20px;
+}
+
+.app_post_btn:disabled,
+.app_action_btn:disabled {
+  opacity: 0.65;
+}
+
+.app_post {
+  margin-top: 16px;
+}
+
+.app_post_header {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  padding: 20px 22px 8px;
+}
+
+.app_post_author {
+  color: #121926;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.app_post_meta {
+  color: #667085;
+  font-size: 13px;
+  margin: 2px 0 0;
+}
+
+.app_post_body {
+  padding: 8px 22px 18px;
+}
+
+.app_post_body p {
+  color: #344054;
+  margin-bottom: 14px;
+  white-space: pre-wrap;
+}
+
+.app_post_image {
+  border-radius: 6px;
+  max-height: 520px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.app_stats {
+  border-top: 1px solid #eef0f5;
+  color: #667085;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 13px;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 12px 22px;
+}
+
+.app_liked_by {
+  color: #475467;
+}
+
+.app_actions {
+  border-top: 1px solid #eef0f5;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.app_action_btn {
+  background: transparent;
+  color: #475467;
+  min-height: 46px;
+}
+
+.app_action_btn_active {
+  color: #5865f2;
+}
+
+.app_comments {
+  border-top: 1px solid #eef0f5;
+  padding: 18px 22px 22px;
+}
+
+.app_comment_form,
+.app_reply_form {
+  display: flex;
+  gap: 10px;
+}
+
+.app_comment_form textarea,
+.app_reply_form textarea {
+  flex: 1;
+  min-height: 44px;
+}
+
+.app_reply_form {
+  margin-top: 10px;
+}
+
+.app_comment {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.app_comment_bubble {
+  background: #f6f7fb;
+  border-radius: 6px;
+  flex: 1;
+  padding: 12px;
+}
+
+.app_comment_name {
+  color: #121926;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.app_comment_text {
+  color: #344054;
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+}
+
+.app_comment_tools {
+  align-items: center;
+  color: #667085;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 13px;
+  gap: 10px;
+}
+
+.app_inline_btn {
+  background: transparent;
+  border: 0;
+  color: #5865f2;
+  font-weight: 600;
+  padding: 0;
+}
+
+.app_replies {
+  margin-left: 52px;
+}
+
+.app_sidebar {
+  padding: 22px;
+}
+
+.app_sidebar h4 {
+  color: #121926;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.app_sidebar p,
+.app_sidebar li {
+  color: #475467;
+  font-size: 14px;
+}
+
+.app_empty {
+  color: #667085;
+  padding: 26px;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .app_feed_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app_feed_header_inner {
+    gap: 12px;
+  }
+
+  .app_sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .app_feed_header_inner,
+  .app_composer_top,
+  .app_comment_form,
+  .app_reply_form {
+    align-items: stretch;
+  }
+
+  .app_feed_header_inner {
+    flex-direction: column;
+    padding: 14px 0;
+  }
+
+  .app_composer_top,
+  .app_comment,
+  .app_comment_form,
+  .app_reply_form {
+    flex-direction: column;
+  }
+
+  .app_replies {
+    margin-left: 18px;
+  }
+}

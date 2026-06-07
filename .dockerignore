@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.env
+.env.local
+__MACOSX
+Selection_Task_for_Full_Stack_Engineer_at_Appifylab.pdf
+Dockerfile
+docker-compose.yml
+README.md
+prisma/dev.db
+prisma/dev.db-journal
+public/uploads/*
+!public/uploads/.gitkeep
+npm-debug.log*
